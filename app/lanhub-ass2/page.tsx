@@ -47,6 +47,10 @@ const TravelApp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+ 
+  {/*  LOGIN FUNCTIONn*/}
+
+
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -58,158 +62,561 @@ const TravelApp: React.FC = () => {
 
     if (foundUser) {
       setCurrentUser(foundUser);
+
       alert(`Welcome ${foundUser.name}!`);
     } else {
-      alert("Invalid email or password. Please try again.");
+      alert(
+        "Invalid email or password. Please sign up if you don't have an account."
+      );
     }
   };
 
   return (
+    <div className="relative min-h-screen w-full overflow-hidden">
+
+      {/* BACKGROUND IMAGE */}
+
     <div
-      className=" relative h-scroll w-full bg-cover bg-center bg-no-repeat flex items-center justify-start"
-      style={{
-        backgroundImage: "url('/images/newyork.PNG')",
-      }}
-    >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+  className="background-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: "url('/images/newyork.PNG')",
+  }}
+/>
 
-      {/* Login Card */}
-      <div className="relative z-10 ml-6 md:ml-16 lg:ml-24 w-[90%] sm:w-112.5 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-30 mt-8">
+      {/* DARK OVERLAY */}
 
-        {/* Logo and text */}
-        <div className="mb-8">
-          <h1 className="text-blue-800 text-2xl font-extrabold mb-4">
-            JOSDOIT
-          </h1>
+      <div className="absolute inset-0 bg-black/30" />
 
-          <h2 className="text-black text-2xl font-bold leading-tight mb-3">
-            Artificial Intelligent Driving Research For The Travel Industry
-          </h2>
 
-          <p className="text-gray-500 font-light">
-            Welcome back, please login to your account.
-          </p>
-        </div>
+      {/* LOGIN SECTION */}
 
-        {/* Login Form */}
-        <form
-          onSubmit={handleLogin}
-          className="flex flex-col gap-4"
+      <div className="relative z-20 min-h-screen flex items-center justify-start pb-16" >
+
+        {/*   LOGIN CARD*/}
+
+        <div
+          className="
+            ml-6
+            md:ml-16
+            lg:ml-24
+            w-[90%]
+            sm:w-112.5
+            bg-white/95
+            backdrop-blur-sm
+            rounded-2xl
+            shadow-2xl
+            p-8
+            my-8
+          "
         >
-          {/* Email */}
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-14 px-4 text-black border border-gray-300 border-l-4 border-l-blue-800 rounded-md outline-none focus:ring-2 focus:ring-blue-300"
-            placeholder="Email Address"
-            required
-          />
 
-          {/* Password */}
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full h-14 px-4 text-black border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-300"
-            placeholder="Password"
-            required
-          />
+      
+            {/*  LOGO AND DESCRIPTION*/}
 
-          {/* Remember me + forgot password */}
-          <div className="flex justify-between items-center text-sm">
-            <label className="flex items-center gap-2 text-gray-600 cursor-pointer">
-              <input
-                type="checkbox"
-                className="w-4 h-4 accent-blue-800"
-              />
-              Remember me
-            </label>
+          <div className="mb-8">
 
-            <button
-              type="button"
-              className="text-blue-800 hover:underline"
-            >
-              Forgot password?
-            </button>
+            <h1 className="text-blue-800 text-2xl font-extrabold mb-4">
+              JOSDOIT
+            </h1>
+
+            <h2 className="text-black text-2xl font-bold leading-tight mb-3">
+              Artificial Intelligent Driving Research For The Travel Industry
+            </h2>
+
+            <p className="text-gray-500 font-light">
+              Welcome back, please login to your account.
+            </p>                                                        
+
+          </div>
+                          
+
+          {/*LOGIN FORM*/}
+
+          <form
+            onSubmit={handleLogin}
+            className="flex flex-col gap-4"
+          >
+
+            {/* EMAIL */}
+
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="
+                w-full
+                h-14
+                px-4
+                text-black
+                border
+                border-gray-300
+                border-l-4
+                border-l-blue-800
+                rounded-md
+                outline-none
+                focus:ring-2
+                focus:ring-blue-300
+              "
+              placeholder="Email Address"
+              required
+            />
+
+
+            {/* PASSWORD */}
+
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="
+                w-full
+                h-14
+                px-4
+                text-black
+                border
+                border-gray-300
+                rounded-md
+                outline-none
+                focus:ring-2
+                focus:ring-blue-300
+              "
+              placeholder="Password"
+              required
+            />
+
+
+            {/*  REMEMBER ME + FORGOT PASSWORD*/}
+
+            <div className="flex justify-between items-center text-sm">
+
+              <label
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  text-gray-600
+                  cursor-pointer
+                "
+              >
+
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 accent-blue-800"
+                />
+
+                Remember me
+
+              </label>
+
+
+              <button
+                type="button"
+                className="text-blue-800 hover:underline"
+              >
+                Forgot password?
+              </button>
+
+            </div>
+
+
+            //login
+
+            <div className="flex gap-3 mt-3">
+
+              <button
+                type="submit"
+                className="
+                  flex-1
+                  bg-blue-800
+                  text-white
+                  h-12
+                  rounded-md
+                  font-semibold
+                  hover:bg-blue-900
+                  transition
+                "
+              >
+                Login
+              </button>
+
+
+              <button
+                type="button"
+                className="
+                  flex-1
+                  border-2
+                  border-blue-800
+                  bg-white
+                  text-blue-800
+                  h-12
+                  rounded-md
+                  font-semibold
+                  hover:bg-blue-50
+                  transition
+                "
+              >
+                Signup
+              </button>
+
+            </div>
+
+          </form>
+
+
+        
+             {/* SOCIAL LOGIN */}
+
+          <div className="mt-8">
+
+            <p className="text-center text-gray-500 mb-4">
+              Or login with
+            </p>
+
+
+            <div className="flex gap-2">
+
+              {/* FACEBOOK */}
+
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  flex
+                  flex-1
+                  justify-center
+                  items-center
+                  h-10
+                  border
+                  border-gray-300
+                  rounded-md
+                  text-blue-800
+                  font-bold
+                  hover:bg-gray-50
+                "
+              >
+                Facebook
+              </a>
+
+
+              {/* LINKEDIN */}
+
+              <a
+                href="https://www.LinkedIn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  flex
+                  flex-1
+                  justify-center
+                  items-center
+                  h-10
+                  border
+                  border-gray-300
+                  rounded-md
+                  text-blue-800
+                  font-bold
+                  hover:bg-gray-50
+                "
+              >
+                LinkedIn
+              </a>
+
+
+              {/* GOOGLE */}
+
+              <a
+                href="https://www.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  flex
+                  flex-1
+                  justify-center
+                  items-center
+                  h-10
+                  border
+                  border-gray-300
+                  rounded-md
+                  text-blue-800
+                  font-bold
+                  hover:bg-gray-50
+                "
+              >
+                Google
+              </a>
+
+            </div>
+
           </div>
 
-          {/* Login + Signup */}
-          <div className="flex gap-3 mt-3">
-            <button
-              type="submit"
-              className="flex-1 bg-blue-800 text-white h-12 rounded-md font-semibold hover:bg-blue-900 transition"
-            >
-              Login
-            </button>
 
-            <button
-              type="button"
-              className="flex-1 border-2 border-blue-800 bg-white text-blue-800 h-12 rounded-md font-semibold hover:bg-blue-50 transition"
-            >
-              Signup
-            </button>
-          </div>
-        </form>
+          {/* LOGGED IN USER  */}
 
-        {/* Social Login */}
-        <div className="mt-8">
-          <p className="text-center text-gray-500 mb-4">
-            Or login with
-          </p>
+          {currentUser && (
+            <p className="text-center text-green-600 mt-5 font-semibold">
+              Logged in as {currentUser.name}
+            </p>
+          )}
 
-          <div className="flex gap-2">
-            <button
-              type="button"
-              className="flex-1 h-10 border border-gray-300 rounded-md text-blue-800 font-bold hover:bg-gray-50"
-            >
-              Facebook
-            </button>
-
-            <button
-              type="button"
-              className="flex-1 h-10 border border-gray-300 rounded-md text-blue-800 font-bold hover:bg-gray-50"
-            >
-              LinkedIn
-            </button>
-
-            <button
-              type="button"
-              className="flex-1 h-10 border border-gray-300 rounded-md text-blue-800 font-bold hover:bg-gray-50"
-            >
-              Google
-            </button>
-          </div>
         </div>
 
-        {/* Logged in user */}
-        {currentUser && (
-          <p className="text-center text-green-600 mt-5 font-semibold">
-            Logged in as {currentUser.name}
-          </p>
-        )}
       </div>
-      {/*  menu bar */}
-      <div className="absolute bottom-0 left-0 z-40 w-full h-12 bg-white/95">
-        <section className="flex justify-between flex-row w-full h-12 ">
-         <p className="font-bold text-blue-800">USA</p>
-         <p className="font-bold text-blue-800">Dudai</p>
-         <p className="font-bold text-blue-800">Iraq</p>
-         <p className="font-bold text-blue-800">Egypt</p>
-         <p className="font-bold text-blue-800">Spain</p>
-         <p className="font-bold text-blue-800">China</p>
-         <p className="font-bold text-blue-800">Ghana</p>
-         <p className="font-bold text-blue-800">Nigeria</p>
-         <p className="font-bold text-blue-800">canada</p>
-         <p className="font-bold text-blue-800">London</p>
-       
-        
+
+      {/*  BOTTOM COUNTRY MENU */}
+
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0                                      
+          z-40
+          w-full
+          h-14
+          bg-white/95
+          backdrop-blur-md
+          shadow-lg
+        "
+      >
+
+        <section
+          className="
+            flex
+            justify-between
+            items-center
+            w-full
+            h-full
+            overflow-x-auto
+          "
+        >
+
+          {/* USA */}
+
+          <a
+            href="https://www.visittheusa.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            USA
+          </a>
+
+
+          {/* DUBAI */}
+
+          <a
+            href="https://www.visitdubai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Dubai
+          </a>
+
+
+          {/* IRAQ */}
+
+          <a
+            href="https://visit-iraq.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Iraq
+          </a>
+
+
+          {/* EGYPT */}
+
+          <a
+            href="https://www.experienceegypt.eg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Egypt
+          </a>
+
+
+          {/* SPAIN */}
+
+          <a
+            href="https://www.spain.info/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Spain
+          </a>
+
+
+          {/* CHINA */}
+
+          <a
+            href="https://www.travelchina.org.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            China
+          </a>
+
+
+          {/* GHANA */}
+
+          <a
+            href="https://visitghana.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Ghana
+          </a>
+
+
+          {/* NIGERIA */}
+
+          <a
+            href="https://tourism.gov.ng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Nigeria
+          </a>
+
+
+          {/* CANADA */}
+
+          <a
+            href="https://travel.destinationcanada.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            Canada
+          </a>
+
+
+          {/* LONDON */}
+
+          <a
+            href="https://www.visitlondon.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex
+              justify-center
+              items-center
+              font-bold
+              text-blue-700
+              px-4
+              whitespace-nowrap
+              hover:bg-blue-50
+              h-full
+            "
+          >
+            London
+          </a>
+
         </section>
-    </div>
+
+      </div>
+
     </div>
   );
 };
 
 export default TravelApp;
+
 
