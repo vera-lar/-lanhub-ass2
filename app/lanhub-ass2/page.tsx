@@ -2,7 +2,8 @@
 'use client';
 
 import { useState } from "react";
-
+import{useRouter} from "next/navigation";
+import Signup from "../signup/page";
 type User = {
   id: number;
   name: string;
@@ -46,7 +47,7 @@ const TravelApp: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const router = useRouter();
  
   {/*  LOGIN FUNCTIONn*/}
 
@@ -70,6 +71,8 @@ const TravelApp: React.FC = () => {
       );
     }
   };
+ 
+
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
@@ -219,7 +222,6 @@ const TravelApp: React.FC = () => {
             </div>
 
 
-            //login
 
             <div className="flex gap-3 mt-3">
 
@@ -241,8 +243,8 @@ const TravelApp: React.FC = () => {
 
 
               <button
-                type="button"
-                className="
+                  type="submit"
+                  className="
                   flex-1
                   border-2
                   border-blue-800
@@ -254,6 +256,7 @@ const TravelApp: React.FC = () => {
                   hover:bg-blue-50
                   transition
                 "
+                onClick={() => router.push('/signup')}
               >
                 Signup
               </button>
