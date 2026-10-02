@@ -17,3 +17,10 @@
 .background-zoom {
   animation: backgroundZoom 8s ease-in-out infinite;
 }
+
+@media only screen and (max-width: 768px) {
+  .hide {
+    display: none;
+  }
+  
+}
